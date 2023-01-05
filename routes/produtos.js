@@ -3,7 +3,6 @@ const express = require('express');
 const { send } = require('express/lib/response');
 const router = express.Router();
 
-console.log("Rota dos Produtos Iniciada")
 //Retorna todos os produtos
 router.get('/', (req, res, next) => {
     res.status(200).send({
