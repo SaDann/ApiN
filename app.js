@@ -10,6 +10,21 @@ app.use(morgan('dev'));
 app.use('/produtos', rotaProdutos);
 app.use('/pedidos', rotaPedidos);
 
+app.use((req, res, next) => {
+    const erro = new Error('NÃO ENCONTRADO');
+    erro.status = (404);
+    next(erro);
+});
+
+app.use((error, req, res, next) => {
+    res.status(error.status || 500)
+    return res.send({
+        erro:{
+            mensagem: error.message
+        }
+    });
+});
+
 console.log("Rotas Iniciadas...")
 
 module.exports = app;
