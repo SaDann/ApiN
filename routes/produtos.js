@@ -3,18 +3,22 @@ const express = require('express');
 const { send } = require('express/lib/response');
 const router = express.Router();
 
+console.log("Rota dos Produtos Iniciada")
+//Retorna todos os produtos
 router.get('/', (req, res, next) => {
     res.status(200).send({
-        mensagem:'GET dentro da rota de produtos.'
-    });
+        mensagem:'RETORNANDO PRODUTOS'
+    })
 });
 
+//Adiciona um produto
 router.post('/',(req, res, next) => {
     res.status(201).send({
-        mensagem:'POST dentro da rota de produtos.'
-    });
+        mensagem:'PRODUTO ADICIONADO'
+    })
 });
 
+//Retorna dados de um produto
 router.get('/:id_produto', (req, res, next) => {
     const id = req.params.id_produto
 
@@ -30,4 +34,18 @@ router.get('/:id_produto', (req, res, next) => {
     }
 });
 
-module.exports = router
+//Altera um produto
+router.patch('/', (req, res, next) => {
+    res.status(201).send({
+        mensagem:'PRODUTO ALTERADO'
+    })
+});
+
+//Deleta um produto
+router.delete('/', (req, res, next) => {
+    res.status(200).send({
+        mensagem:'PRODUTO EXCLUIDO'
+    })
+});
+
+module.exports = router;
